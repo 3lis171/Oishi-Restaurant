@@ -3,592 +3,617 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Restaurant Oishi - Sierre</title>
+<title>Restaurant Oishi — Sierre | Japonais &amp; Chinois</title>
+<meta name="description" content="Restaurant Oishi à Sierre — cuisine japonaise et chinoise, sushi, ramen, plats wok. Réservation, à emporter, livraison.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans:wght@400;500;600;700&family=Ma+Shan+Zheng&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --red:#b3122a;
-    --red-dark:#7a0c1c;
-    --gold:#d4a437;
-    --cream:#fff8ef;
-    --white:#ffffff;
-    --text:#2b2b2b;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    font-family: 'Georgia', 'Segoe UI', serif;
-    background:var(--cream);
-    color:var(--text);
-    line-height:1.6;
-  }
-  header{
-    background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%);
-    color:var(--white);
-    padding:1rem 1.5rem;
-    position:sticky;
-    top:0;
-    z-index:100;
-    box-shadow:0 2px 10px rgba(0,0,0,.25);
-  }
-  .header-inner{
-    max-width:1100px;
-    margin:0 auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:1rem;
-  }
-  .logo{
-    font-size:1.8rem;
-    font-weight:bold;
-    letter-spacing:2px;
-    color:var(--gold);
-    text-shadow:1px 1px 2px rgba(0,0,0,.4);
-  }
-  .logo span{color:var(--white);}
-  nav{display:flex;gap:1.2rem;flex-wrap:wrap;}
-  nav a{
-    color:var(--white);
-    text-decoration:none;
-    font-size:.95rem;
-    padding:.3rem .2rem;
-    border-bottom:2px solid transparent;
-    transition:.2s;
-  }
-  nav a:hover{border-bottom:2px solid var(--gold);color:var(--gold);}
-  .lang-switch{display:flex;gap:.4rem;}
-  .lang-switch button{
-    background:var(--white);
-    color:var(--red-dark);
-    border:2px solid var(--gold);
-    border-radius:6px;
-    padding:.3rem .6rem;
-    font-weight:bold;
-    cursor:pointer;
-    font-size:.85rem;
-    transition:.2s;
-  }
-  .lang-switch button.active{
-    background:var(--gold);
-    color:var(--white);
-    border-color:var(--red-dark);
-  }
-  .hero{
-    background:
-      linear-gradient(rgba(122,12,28,.55),rgba(122,12,28,.55)),
-      repeating-linear-gradient(45deg,var(--red) 0 10px, var(--red-dark) 10px 20px);
-    color:var(--white);
-    text-align:center;
-    padding:4.5rem 1.5rem;
-    border-bottom:6px solid var(--gold);
-  }
-  .hero h1{
-    font-size:2.8rem;
-    color:var(--gold);
-    text-shadow:2px 2px 4px rgba(0,0,0,.5);
-    margin-bottom:.5rem;
-  }
-  .hero p{font-size:1.2rem;max-width:600px;margin:0 auto;}
-  .hero .btn{
-    display:inline-block;
-    margin-top:1.5rem;
-    background:var(--gold);
-    color:var(--red-dark);
-    padding:.8rem 1.8rem;
-    border-radius:30px;
-    font-weight:bold;
-    text-decoration:none;
-    box-shadow:0 4px 10px rgba(0,0,0,.3);
-    transition:.2s;
-  }
-  .hero .btn:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.35);}
-
-  section{max-width:1100px;margin:0 auto;padding:3rem 1.5rem;}
-  h2.section-title{
-    text-align:center;
-    color:var(--red);
-    font-size:2rem;
-    margin-bottom:.3rem;
-    position:relative;
-  }
-  .divider{
-    width:80px;height:4px;background:var(--gold);
-    margin:0 auto 2rem auto;border-radius:2px;
-  }
-
-  .gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:1rem;
-  }
-  .gallery img{
-    width:100%;height:180px;object-fit:cover;
-    border-radius:10px;
-    border:3px solid var(--gold);
-    box-shadow:0 3px 8px rgba(0,0,0,.2);
-    transition:.2s;
-  }
-  .gallery img:hover{transform:scale(1.03);}
-
-  .menu-group{
-    background:var(--white);
-    border:2px solid var(--gold);
-    border-radius:12px;
-    margin-bottom:2rem;
-    overflow:hidden;
-    box-shadow:0 3px 10px rgba(0,0,0,.08);
-  }
-  .menu-group h3{
-    background:var(--red);
-    color:var(--white);
-    padding:.8rem 1.2rem;
-    font-size:1.3rem;
-    letter-spacing:1px;
-  }
-  .menu-items{padding:1rem 1.2rem;}
-  .menu-item{
-    display:flex;
-    justify-content:space-between;
-    gap:1rem;
-    padding:.5rem 0;
-    border-bottom:1px dashed #e3d2b8;
-  }
-  .menu-item:last-child{border-bottom:none;}
-  .menu-item .name{color:var(--text);}
-  .menu-item .name small{color:#888;}
-  .menu-item .price{
-    white-space:nowrap;
-    font-weight:bold;
-    color:var(--red-dark);
-  }
-  .spicy{color:#c0392b;font-weight:bold;}
-
-  .about{
-    display:flex;flex-wrap:wrap;gap:2rem;align-items:center;
-  }
-  .about-text{flex:1;min-width:280px;}
-  .about-text p{margin-bottom:1rem;}
-  .info-box{
-    flex:1;min-width:280px;
-    background:var(--white);
-    border:2px solid var(--gold);
-    border-radius:12px;
-    padding:1.5rem;
-  }
-  .info-box p{margin-bottom:.7rem;}
-  .info-box strong{color:var(--red);}
-
-  .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;}
-  .review{
-    background:var(--white);
-    border-left:5px solid var(--gold);
-    border-radius:8px;
-    padding:1.2rem;
-    box-shadow:0 3px 8px rgba(0,0,0,.08);
-  }
-  .review .stars{color:var(--gold);font-size:1.1rem;margin-bottom:.4rem;}
-  .review .author{font-weight:bold;margin-top:.6rem;color:var(--red-dark);}
-
-  .map-wrap{
-    border:3px solid var(--gold);
-    border-radius:12px;
-    overflow:hidden;
-    height:350px;
-  }
-  .map-wrap iframe{width:100%;height:100%;border:0;}
-
-  footer{
-    background:var(--red-dark);
-    color:var(--white);
-    text-align:center;
-    padding:2rem 1rem;
-    margin-top:2rem;
-  }
-  footer a{color:var(--gold);text-decoration:none;}
-
-  @media(max-width:600px){
-    .hero h1{font-size:2rem;}
-    nav{justify-content:center;width:100%;}
-    .header-inner{flex-direction:column;align-items:flex-start;}
-  }
+:root{
+  --red:#B7272C;
+  --red-dark:#6E1418;
+  --red-deep:#4A0E12;
+  --gold:#C9982E;
+  --gold-bright:#F2C245;
+  --cream:#FBF5E8;
+  --white:#FFFFFF;
+  --ink:#2A1712;
+  --ink-soft:#5B4238;
+  --line: rgba(42,23,18,0.12);
+  --shadow: 0 10px 30px rgba(74,14,18,0.15);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Noto Sans', sans-serif;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{
+  font-family:'Noto Serif TC', serif;
+  margin:0;
+  color:var(--red-deep);
+  font-weight:700;
+}
+.seal-font{font-family:'Ma Shan Zheng', cursive;}
+.mono{font-family:'JetBrains Mono', monospace;}
+a{color:inherit;}
+img{max-width:100%;display:block;}
+.container{max-width:1120px;margin:0 auto;padding:0 24px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+}
+ 
+.topbar{
+  position:sticky; top:0; z-index:100;
+  background:rgba(251,245,232,0.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 24px; max-width:1120px; margin:0 auto;
+}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+.brand svg{width:34px;height:34px;flex-shrink:0;}
+.brand-name{font-family:'Noto Serif TC',serif; font-weight:700; font-size:1.25rem; color:var(--red-deep); letter-spacing:0.02em;}
+.nav-links{display:flex; gap:22px; list-style:none; margin:0; padding:0;}
+.nav-links a{
+  text-decoration:none; font-size:0.92rem; font-weight:600; color:var(--ink-soft);
+  padding:6px 2px; border-bottom:2px solid transparent; transition:color .2s, border-color .2s;
+}
+.nav-links a:hover{color:var(--red); border-color:var(--gold);}
+.lang-switch{display:flex; gap:4px; background:var(--white); border:1px solid var(--line); border-radius:999px; padding:3px;}
+.lang-switch button{
+  border:none; background:transparent; font-family:'JetBrains Mono',monospace; font-size:0.78rem; font-weight:700;
+  padding:6px 12px; border-radius:999px; cursor:pointer; color:var(--ink-soft); transition:all .2s;
+}
+.lang-switch button.active{background:var(--red); color:var(--white);}
+.nav-right{display:flex; align-items:center; gap:18px;}
+.burger{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+.burger svg{width:26px;height:26px;}
+ 
+@media (max-width:860px){
+  .nav-links{position:fixed; top:64px; left:0; right:0; background:var(--cream); flex-direction:column;
+    padding:18px 24px; gap:14px; border-bottom:1px solid var(--line); transform:translateY(-130%); transition:transform .3s ease; box-shadow:var(--shadow);}
+  .nav-links.open{transform:translateY(0);}
+  .burger{display:block;}
+}
+ 
+.hero{
+  position:relative; overflow:hidden;
+  background:radial-gradient(120% 140% at 50% -10%, var(--red) 0%, var(--red-dark) 55%, var(--red-deep) 100%);
+  color:var(--white);
+  padding:96px 24px 70px;
+  text-align:center;
+}
+.hero-dragon{
+  position:absolute; top:0; left:0; width:100%; height:100%; opacity:0.16; pointer-events:none;
+}
+.hero-lanterns{position:absolute; top:0; width:100%; display:flex; justify-content:space-between; pointer-events:none; opacity:0.9;}
+.hero-lanterns svg{width:70px; height:auto;}
+.hero-lanterns .l1{margin-left:2%; margin-top:-6px;}
+.hero-lanterns .l2{margin-right:2%; margin-top:-6px;}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; letter-spacing:0.18em;
+  font-size:0.72rem; text-transform:uppercase; color:var(--gold-bright); margin-bottom:18px;
+}
+.eyebrow::before,.eyebrow::after{content:""; width:24px; height:1px; background:var(--gold-bright); opacity:.7;}
+.hero h1{
+  font-size:clamp(2.6rem, 6vw, 4.6rem); color:var(--white); line-height:1.05; margin-bottom:14px;
+  text-shadow:0 4px 24px rgba(0,0,0,0.25);
+}
+.hero p.tagline{font-size:1.15rem; color:rgba(255,255,255,0.88); max-width:560px; margin:0 auto 30px; font-weight:400;}
+.hero-stars{display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:34px; font-size:0.95rem; color:var(--gold-bright);}
+.hero-stars .num{font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--white);}
+.hero-cta{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+.btn{
+  display:inline-flex; align-items:center; gap:8px; padding:14px 28px; border-radius:999px; text-decoration:none;
+  font-weight:700; font-size:0.95rem; cursor:pointer; border:2px solid transparent; transition:transform .2s, box-shadow .2s;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-gold{background:var(--gold-bright); color:var(--red-deep); box-shadow:0 8px 20px rgba(0,0,0,0.25);}
+.btn-outline{background:transparent; border-color:rgba(255,255,255,0.55); color:var(--white);}
+ 
+.infostrip{
+  background:var(--white); border-bottom:1px solid var(--line);
+}
+.infostrip-inner{
+  max-width:1120px; margin:0 auto; padding:20px 24px; display:flex; flex-wrap:wrap; gap:26px; justify-content:center;
+}
+.info-chip{display:flex; align-items:center; gap:10px; font-size:0.92rem; color:var(--ink-soft); font-weight:600;}
+.info-chip svg{width:20px; height:20px; color:var(--red); flex-shrink:0;}
+ 
+.section{padding:70px 24px;}
+.section-head{text-align:center; max-width:640px; margin:0 auto 44px;}
+.section-head .kicker{
+  font-family:'Ma Shan Zheng', cursive; font-size:1.5rem; color:var(--gold); display:block; margin-bottom:2px;
+}
+.section-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem); margin-bottom:10px;}
+.section-head p{color:var(--ink-soft); font-size:1rem;}
+ 
+.pdj{
+  background:var(--white);
+  border:2px solid var(--gold);
+  border-radius:20px;
+  max-width:920px; margin:0 auto; padding:34px 30px;
+  position:relative;
+  box-shadow:var(--shadow);
+}
+.pdj-badge{
+  position:absolute; top:-18px; left:30px; background:var(--red); color:var(--white); font-weight:700;
+  font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; padding:8px 16px; border-radius:999px;
+  box-shadow:0 6px 14px rgba(0,0,0,0.2);
+}
+.pdj-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:18px;}
+.pdj-item{display:flex; justify-content:space-between; align-items:baseline; padding:10px 0; border-bottom:1px dashed var(--line); gap:10px;}
+.pdj-item .name{font-weight:600;}
+.pdj-item .price{font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--red); white-space:nowrap;}
+.pdj-note{margin-top:16px; font-size:0.85rem; color:var(--ink-soft); text-align:center;}
+ 
+.menu-tabs{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:38px;}
+.menu-tab{
+  padding:11px 22px; border-radius:999px; border:1.5px solid var(--line); background:var(--white);
+  font-weight:700; font-size:0.9rem; cursor:pointer; color:var(--ink-soft); transition:all .2s;
+}
+.menu-tab.active{background:var(--red); border-color:var(--red); color:var(--white); box-shadow:0 6px 16px rgba(183,39,44,0.3);}
+.menu-panel{display:none;}
+.menu-panel.active{display:block; animation:fadeIn .35s ease;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+ 
+.item-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:4px 32px;}
+.menu-item{
+  display:flex; align-items:baseline; gap:10px; padding:13px 0; border-bottom:1px solid var(--line);
+}
+.menu-item .num{font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--gold); font-weight:700; min-width:32px;}
+.menu-item .name{font-weight:600; flex:1;}
+.menu-item .name .sub{display:block; font-weight:400; font-size:0.85rem; color:var(--ink-soft); margin-top:2px;}
+.menu-item .price{font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--red); white-space:nowrap;}
+.menu-item .tag{display:inline-flex; align-items:center; justify-content:center; margin-left:6px;}
+.tag-spicy{color:#C9982E;}
+.tag-stamp{
+  display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%;
+  border:1.5px solid var(--red); color:var(--red); font-size:0.6rem; font-weight:900; transform:rotate(-8deg); flex-shrink:0;
+}
+ 
+.sub-tabs{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:30px;}
+.sub-tab{
+  padding:7px 16px; border-radius:999px; border:1px solid var(--line); background:transparent;
+  font-size:0.82rem; font-weight:600; color:var(--ink-soft); cursor:pointer; transition:all .2s;
+}
+.sub-tab.active{background:var(--gold-bright); border-color:var(--gold-bright); color:var(--red-deep);}
+.sub-panel{display:none;}
+.sub-panel.active{display:block; animation:fadeIn .3s ease;}
+.sub-panel-title{text-align:center; font-family:'Noto Serif TC',serif; font-size:1.3rem; color:var(--red-deep); margin-bottom:4px;}
+.sub-panel-count{text-align:center; font-size:0.82rem; color:var(--ink-soft); margin-bottom:20px; display:block;}
+ 
+.legend{display:flex; gap:22px; justify-content:center; flex-wrap:wrap; margin-top:30px; font-size:0.82rem; color:var(--ink-soft);}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+ 
+.gallery-wrap{background:var(--red-deep); position:relative; overflow:hidden;}
+.gallery-wrap .section-head h2, .gallery-wrap .section-head p{color:var(--white);}
+.gallery-wrap .section-head .kicker{color:var(--gold-bright);}
+.gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; max-width:1000px; margin:0 auto;}
+.photo-card{
+  background:var(--white); padding:10px 10px 16px; border-radius:4px; box-shadow:0 14px 30px rgba(0,0,0,0.35);
+  transform:rotate(var(--r,0deg));
+}
+.photo-card:nth-child(1){--r:-4deg;}
+.photo-card:nth-child(2){--r:3deg;}
+.photo-card:nth-child(3){--r:-2deg;}
+.photo-card:nth-child(4){--r:4deg;}
+.photo-card img{border-radius:2px; aspect-ratio:4/5; object-fit:cover;}
+.photo-card .cap{font-family:'Ma Shan Zheng',cursive; font-size:1.05rem; text-align:center; color:var(--ink); margin-top:8px;}
+@media (max-width:760px){.gallery-grid{grid-template-columns:repeat(2,1fr);} }
+ 
+.chips-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; max-width:960px; margin:0 auto;}
+.chip-card{background:var(--white); border:1px solid var(--line); border-radius:14px; padding:20px; text-align:center;}
+.chip-card svg{width:28px; height:28px; color:var(--red); margin:0 auto 10px;}
+.chip-card .t{font-weight:700; font-size:0.92rem;}
+ 
+.visit{background:var(--white);}
+.visit-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; max-width:1000px; margin:0 auto; align-items:stretch;}
+@media (max-width:820px){.visit-grid{grid-template-columns:1fr;}}
+.visit-map{border-radius:16px; overflow:hidden; box-shadow:var(--shadow); min-height:320px; border:6px solid var(--white); outline:1px solid var(--line);}
+.visit-map iframe{width:100%; height:100%; min-height:320px; border:0; display:block;}
+.visit-card{background:var(--cream); border:1px solid var(--line); border-radius:16px; padding:30px;}
+.visit-card h3{font-size:1.3rem; margin-bottom:18px;}
+.visit-row{display:flex; gap:12px; align-items:flex-start; margin-bottom:16px;}
+.visit-row svg{width:20px; height:20px; color:var(--red); flex-shrink:0; margin-top:2px;}
+.visit-row a{text-decoration:none; font-weight:600;}
+.visit-row a:hover{color:var(--red);}
+.hours-table{width:100%; border-collapse:collapse; margin-top:6px; font-size:0.88rem;}
+.hours-table td{padding:4px 0; border-bottom:1px dashed var(--line);}
+.hours-table td:last-child{text-align:right; font-family:'JetBrains Mono',monospace;}
+ 
+footer{background:var(--red-deep); color:rgba(255,255,255,0.85); padding:50px 24px 26px;}
+.footer-inner{max-width:1120px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:30px;}
+.footer-brand{display:flex; align-items:center; gap:10px;}
+.footer-brand svg{width:30px;height:30px;}
+.footer-brand span{font-family:'Noto Serif TC',serif; font-weight:700; font-size:1.1rem; color:var(--white);}
+.footer-links{display:flex; gap:20px; flex-wrap:wrap; list-style:none; padding:0; margin:0;}
+.footer-links a{text-decoration:none; font-size:0.88rem; color:rgba(255,255,255,0.75);}
+.footer-links a:hover{color:var(--gold-bright);}
+.footer-bottom{max-width:1120px; margin:34px auto 0; padding-top:20px; border-top:1px solid rgba(255,255,255,0.15);
+  font-size:0.78rem; color:rgba(255,255,255,0.55); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="header-inner">
-    <div class="logo">🏮 OISHI <span>Sierre</span></div>
+ 
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" fill="#B7272C"/>
+        <path d="M24 10c1 4-3 6-3 10 0 3 2 5 2 8" stroke="#F2C245" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <path d="M14 18c3 2 5 6 5 10" stroke="#F2C245" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <path d="M34 18c-3 2-5 6-5 10" stroke="#F2C245" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <ellipse cx="24" cy="30" rx="10" ry="6" fill="#F2C245"/>
+        <rect x="21" y="35" width="6" height="4" fill="#F2C245"/>
+      </svg>
+      <span class="brand-name">Oishi</span>
+    </a>
     <nav>
-      <a href="#accueil" data-i18n="nav_home">Accueil</a>
-      <a href="#entrees" data-i18n="nav_starters">Entrées</a>
-      <a href="#plats" data-i18n="nav_dishes">Plats</a>
-      <a href="#sushi" data-i18n="nav_sushi">Sushi</a>
-      <a href="#avis" data-i18n="nav_reviews">Avis</a>
-      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#menu" data-i18n="nav_menu">Menu</a></li>
+        <li><a href="#sushi" data-i18n="nav_sushi">Sushi</a></li>
+        <li><a href="#galerie" data-i18n="nav_gallery">Galerie</a></li>
+        <li><a href="#visite" data-i18n="nav_visit">Nous trouver</a></li>
+      </ul>
     </nav>
-    <div class="lang-switch">
-      <button data-lang="fr" class="active">FR</button>
-      <button data-lang="en">EN</button>
-      <button data-lang="de">DE</button>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="de">DE</button>
+      </div>
+      <button class="burger" id="burgerBtn" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+      </button>
     </div>
   </div>
 </header>
-
-<section class="hero" id="accueil">
+ 
+<section class="hero" id="top">
+  <div class="hero-lanterns">
+    <svg class="l1" viewBox="0 0 60 100" fill="none"><ellipse cx="30" cy="45" rx="24" ry="34" fill="#8f1f22"/><rect x="26" y="6" width="8" height="12" fill="#F2C245"/><rect x="20" y="82" width="20" height="6" rx="2" fill="#F2C245"/><line x1="30" y1="88" x2="30" y2="100" stroke="#F2C245" stroke-width="2"/></svg>
+    <svg class="l2" viewBox="0 0 60 100" fill="none"><ellipse cx="30" cy="45" rx="24" ry="34" fill="#8f1f22"/><rect x="26" y="6" width="8" height="12" fill="#F2C245"/><rect x="20" y="82" width="20" height="6" rx="2" fill="#F2C245"/><line x1="30" y1="88" x2="30" y2="100" stroke="#F2C245" stroke-width="2"/></svg>
+  </div>
+  <svg class="hero-dragon" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 250 C 150 100, 300 400, 450 220 S 750 40, 900 220 S 1100 400, 1200 240" stroke="#F2C245" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M0 300 C 150 150, 300 450, 450 270 S 750 90, 900 270 S 1100 450, 1200 290" stroke="#F2C245" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+  <span class="eyebrow" data-i18n="hero_eyebrow">Sierre · Valais</span>
   <h1>Restaurant Oishi</h1>
-  <p data-i18n="hero_sub">Spécialités japonaises et chinoises à Sierre — sur place, à emporter ou en livraison.</p>
-  <a class="btn" href="#plats" data-i18n="hero_btn">Voir le menu</a>
-</section>
-
-<section class="gallery">
-  <img src="https://via.placeholder.com/400x300/b3122a/ffffff?text=Nouilles+Boeuf" alt="Nouilles">
-  <img src="https://via.placeholder.com/400x300/d4a437/ffffff?text=Shao+Mai" alt="Shao mai">
-  <img src="https://via.placeholder.com/400x300/7a0c1c/ffffff?text=Poulet+Curry" alt="Poulet curry">
-  <img src="https://via.placeholder.com/400x300/b3122a/ffffff?text=Sushi" alt="Sushi">
-</section>
-
-<section id="entrees">
-  <h2 class="section-title" data-i18n="starters_title">Entrées</h2>
-  <div class="divider"></div>
-  <div class="menu-group">
-    <h3 data-i18n="starters_title">Entrées</h3>
-    <div class="menu-items" id="starters-list"></div>
+  <p class="tagline" data-i18n="hero_tagline">Spécialités japonaises &amp; chinoises — sushi, ramen et woks préparés avec soin, en plein cœur de Sierre.</p>
+  <div class="hero-stars">
+    <span>★★★★★</span><span class="num">4.7</span><span data-i18n="hero_reviews">(93 avis Google)</span>
+  </div>
+  <div class="hero-cta">
+    <a class="btn btn-gold" href="tel:+41274561062" data-i18n="hero_cta_call">📞 Réserver — 027 456 10 62</a>
+    <a class="btn btn-outline" href="#menu" data-i18n="hero_cta_menu">Voir le menu</a>
   </div>
 </section>
-
-<section id="plats">
-  <h2 class="section-title" data-i18n="dishes_title">Plats principaux</h2>
-  <div class="divider"></div>
-  <div class="menu-group">
-    <h3 data-i18n="dishes_title">Plats principaux</h3>
-    <div class="menu-items" id="dishes-list"></div>
+ 
+<div class="infostrip">
+  <div class="infostrip-inner">
+    <div class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round"/></svg><span data-i18n="info_hours">Ouvert dès 11h30</span></div>
+    <div class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-4v-6H8v6H4a1 1 0 01-1-1z"/></svg><span>Avenue du Rothorn 8, 3960 Sierre</span></div>
+    <div class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l2-3h14l2 3M5 7v12a1 1 0 001 1h12a1 1 0 001-1V7M5 7h14"/></svg><span data-i18n="info_takeaway">À emporter &amp; livraison</span></div>
+    <div class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="6" r="3"/><path d="M6 21v-2a6 6 0 0112 0v2"/></svg><span data-i18n="info_wheelchair">Accès fauteuil roulant</span></div>
   </div>
-
-  <div class="menu-group">
-    <h3 data-i18n="ramen_title">Ramen</h3>
-    <div class="menu-items" id="ramen-list"></div>
+</div>
+ 
+<section class="section" id="plat-du-jour">
+  <div class="section-head">
+    <span class="kicker">今日特餐</span>
+    <h2 data-i18n="pdj_title">Plat du jour</h2>
+    <p data-i18n="pdj_sub">Servi du lundi au vendredi, le midi — avec riz parfumé</p>
   </div>
-
-  <div class="menu-group">
-    <h3 data-i18n="menu_title">Menu du jour</h3>
-    <div class="menu-items" id="daily-list"></div>
-  </div>
-</section>
-
-<section id="sushi">
-  <h2 class="section-title" data-i18n="sushi_title">Sushi &amp; Maki</h2>
-  <div class="divider"></div>
-
-  <div class="menu-group">
-    <h3>Hoso Maki (6 <span data-i18n="pieces">pièces</span>)</h3>
-    <div class="menu-items" id="hosomaki-list"></div>
-  </div>
-  <div class="menu-group">
-    <h3>Temaki (1 <span data-i18n="piece">pièce</span>)</h3>
-    <div class="menu-items" id="temaki-list"></div>
-  </div>
-  <div class="menu-group">
-    <h3>Nigiri (2 <span data-i18n="pieces">pièces</span>)</h3>
-    <div class="menu-items" id="nigiri-list"></div>
-  </div>
-  <div class="menu-group">
-    <h3>Sashimi (3 <span data-i18n="pieces">pièces</span>)</h3>
-    <div class="menu-items" id="sashimi-list"></div>
-  </div>
-  <div class="menu-group">
-    <h3>California (8 <span data-i18n="pieces">pièces</span>)</h3>
-    <div class="menu-items" id="california-list"></div>
-  </div>
-  <div class="menu-group">
-    <h3>Massago (8 <span data-i18n="pieces">pièces</span>)</h3>
-    <div class="menu-items" id="massago-list"></div>
-  </div>
-  <div class="menu-group">
-    <h3 data-i18n="crispy_title">California Croustillant (8 <span data-i18n="pieces">pièces</span>)</h3>
-    <div class="menu-items" id="crispy-list"></div>
-  </div>
-  <div class="menu-group">
-    <h3>Gunkan (2 <span data-i18n="pieces">pièces</span>)</h3>
-    <div class="menu-items" id="gunkan-list"></div>
-  </div>
-  <div class="menu-group">
-    <h3>Futomaki (5 <span data-i18n="pieces">pièces</span>)</h3>
-    <div class="menu-items" id="futomaki-list"></div>
-  </div>
-  <div class="menu-group">
-    <h3>Chirashi</h3>
-    <div class="menu-items" id="chirashi-list"></div>
+  <div class="pdj">
+    <span class="pdj-badge" data-i18n="pdj_badge">Lun–Ven midi</span>
+    <div class="pdj-grid" id="pdjGrid"></div>
+    <p class="pdj-note" data-i18n="pdj_note">Le plat du jour est servi uniquement le midi, du lundi au vendredi, riz parfumé inclus.</p>
   </div>
 </section>
-
-<section id="about">
-  <h2 class="section-title" data-i18n="about_title">Notre restaurant</h2>
-  <div class="divider"></div>
-  <div class="about">
-    <div class="about-text">
-      <p data-i18n="about_p1">Situé à Sierre, le restaurant Oishi vous propose une cuisine japonaise et chinoise authentique dans une ambiance chaleureuse et conviviale, en famille depuis toujours.</p>
-      <p data-i18n="about_p2">Nos spécialités : sushi frais, ramen généreux, plats wok, et une large sélection de plats chinois traditionnels — à savourer sur place, en terrasse, à emporter ou livrés chez vous.</p>
+ 
+<section class="section" id="menu" style="background:var(--white);">
+  <div class="section-head">
+    <span class="kicker">菜单</span>
+    <h2 data-i18n="menu_title">La carte</h2>
+    <p data-i18n="menu_sub">Cuisine chinoise au wok, nouilles, riz et ramen maison</p>
+  </div>
+  <div class="menu-tabs" id="menuTabs">
+    <button class="menu-tab active" data-panel="entrees" data-i18n="tab_entrees">Entrées</button>
+    <button class="menu-tab" data-panel="plats" data-i18n="tab_plats">Plats</button>
+    <button class="menu-tab" data-panel="ramen" data-i18n="tab_ramen">Ramen</button>
+  </div>
+  <div class="menu-panel active" id="panel-entrees">
+    <div class="item-grid" id="grid-entrees"></div>
+  </div>
+  <div class="menu-panel" id="panel-plats">
+    <div class="item-grid" id="grid-plats"></div>
+    <p class="pdj-note" id="platsNote" style="margin-top:26px;"></p>
+  </div>
+  <div class="menu-panel" id="panel-ramen">
+    <div class="item-grid" id="grid-ramen"></div>
+  </div>
+  <div class="legend">
+    <span class="tag-spicy">🌶️ <span data-i18n="legend_spicy">Épicé</span></span>
+    <span><span class="tag-stamp">推</span> <span data-i18n="legend_reco">Recommandé par la maison</span></span>
+  </div>
+</section>
+ 
+<section class="section" id="sushi" style="background:var(--cream);">
+  <div class="section-head">
+    <span class="kicker">寿司</span>
+    <h2 data-i18n="sushi_title">Sushi &amp; sashimi</h2>
+    <p data-i18n="sushi_sub">Préparés minute — poisson frais, riz vinaigré maison</p>
+  </div>
+  <div class="sub-tabs" id="sushiTabs"></div>
+  <div id="sushiPanels"></div>
+</section>
+ 
+<section class="section gallery-wrap" id="galerie">
+  <div class="section-head">
+    <span class="kicker">美食</span>
+    <h2 data-i18n="gallery_title">Notre cuisine</h2>
+    <p data-i18n="gallery_sub">Un aperçu de nos assiettes, servies fraîches chaque jour</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="photo-card"><img src="data:image/jpeg;base64,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" alt="Nouilles sautées Oishi"><div class="cap" data-i18n="cap_noodles">Nouilles sautées</div></div>
+    <div class="photo-card"><img src="data:image/jpeg;base64,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" alt="Raviolis vapeur Oishi"><div class="cap" data-i18n="cap_baos">Raviolis vapeur</div></div>
+    <div class="photo-card"><img src="data:image/jpeg;base64,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" alt="Dessert Oishi"><div class="cap" data-i18n="cap_dessert">Douceur maison</div></div>
+    <div class="photo-card"><img src="data:image/jpeg;base64,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" alt="Plat sauté Oishi"><div class="cap" data-i18n="cap_plate">Wok du chef</div></div>
+  </div>
+</section>
+ 
+<section class="section" style="background:var(--white);">
+  <div class="section-head">
+    <span class="kicker">服务</span>
+    <h2 data-i18n="practical_title">Bon à savoir</h2>
+  </div>
+  <div class="chips-grid">
+    <div class="chip-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="6" r="3"/><path d="M6 21v-2a6 6 0 0112 0v2"/></svg><div class="t" data-i18n="chip_wheelchair">Accès &amp; sanitaires PMR</div></div>
+    <div class="chip-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg><div class="t" data-i18n="chip_terrace">Terrasse extérieure</div></div>
+    <div class="chip-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l2-3h14l2 3M5 7v12a1 1 0 001 1h12a1 1 0 001-1V7M5 7h14"/></svg><div class="t" data-i18n="chip_takeaway">À emporter</div></div>
+    <div class="chip-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9 6 9-6M3 7l9 6 9-6-9-4z"/></svg><div class="t" data-i18n="chip_delivery">Livraison</div></div>
+    <div class="chip-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg><div class="t" data-i18n="chip_cards">Cartes &amp; NFC</div></div>
+    <div class="chip-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M6 21c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg><div class="t" data-i18n="chip_kids">Familles &amp; groupes bienvenus</div></div>
+  </div>
+</section>
+ 
+<section class="section visit" id="visite">
+  <div class="section-head">
+    <span class="kicker">地址</span>
+    <h2 data-i18n="visit_title">Nous trouver</h2>
+  </div>
+  <div class="visit-grid">
+    <div class="visit-map">
+      <iframe src="https://www.google.com/maps?q=Restaurant+Oishi+Avenue+du+Rothorn+8+3960+Sierre&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <div class="info-box">
-      <p><strong data-i18n="info_hours">Horaires</strong>: <span data-i18n="hours_val">Fermé le lundi matin — ouvert dès 11h30</span></p>
-      <p><strong data-i18n="info_wheelchair">Accessibilité</strong>: <span data-i18n="wheelchair_val">Entrée, parking et places assises accessibles en fauteuil roulant</span></p>
-      <p><strong data-i18n="info_service">Services</strong>: <span data-i18n="service_val">Sur place, à emporter, livraison, terrasse</span></p>
-      <p><strong data-i18n="info_payment">Paiement</strong>: <span data-i18n="payment_val">Cartes de crédit, cartes de débit, paiement mobile NFC</span></p>
-    </div>
-  </div>
-</section>
-
-<section id="avis">
-  <h2 class="section-title" data-i18n="reviews_title">Avis clients</h2>
-  <div class="divider"></div>
-  <div class="reviews">
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p data-i18n="review1">Grandes portions, bien garnies avec beaucoup de viande. Le canard était excellent et les ramen, bien que différents de ce à quoi je m'attendais, étaient bons et savoureux.</p>
-      <div class="author">João Miguel Silva</div>
-    </div>
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p data-i18n="review2">Vraiment très bon et bien préparé. Service amical et ambiance détendue.</p>
-      <div class="author">Lisa Thomas</div>
-    </div>
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p data-i18n="review3">Personnel le plus sympathique qui soit, restaurant familial. Les sushi et le poulet étaient délicieux. Pour les standards suisses, les prix sont excellents pour la quantité — fortement recommandé !</p>
-      <div class="author">Siebe Burgman</div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2 class="section-title" data-i18n="contact_title">Contact &amp; Réservation</h2>
-  <div class="divider"></div>
-  <div class="about">
-    <div class="info-box" style="flex:1;">
-      <p><strong data-i18n="info_address">Adresse</strong>: Avenue du Rothorn 8, 3960 Sierre</p>
-      <p><strong data-i18n="info_phone">Téléphone</strong>: <a href="tel:+41274561062">027 456 10 62</a></p>
-      <p><strong data-i18n="info_email">E-mail</strong>: <a href="mailto:oishisierre@gmail.com">oishisierre@gmail.com</a></p>
-      <p><strong data-i18n="info_facebook">Facebook</strong>: <a href="https://www.facebook.com/Restaurant-Oishi-Japonais-et-Chinois-Sierre-107896803898742" target="_blank">Restaurant Oishi Sierre</a></p>
-    </div>
-    <div class="map-wrap" style="flex:1;">
-      <iframe loading="lazy" src="https://www.google.com/maps?q=Avenue+du+Rothorn+8,+3960+Sierre,+Suisse&output=embed"></iframe>
+    <div class="visit-card">
+      <h3 data-i18n="visit_contact">Contact &amp; horaires</h3>
+      <div class="visit-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-4v-6H8v6H4a1 1 0 01-1-1z"/></svg>
+        <span>Avenue du Rothorn 8<br>3960 Sierre</span>
+      </div>
+      <div class="visit-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 2.9a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.9.6a2 2 0 011.7 2z"/></svg>
+        <a href="tel:+41274561062">027 456 10 62</a>
+      </div>
+      <div class="visit-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 6l8 6 8-6"/></svg>
+        <a href="mailto:oishisierre@gmail.com">oishisierre@gmail.com</a>
+      </div>
+      <div class="visit-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2H14a5 5 0 00-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        <a href="https://www.facebook.com/Restaurant-Oishi-Japonais-et-Chinois-Sierre-107896803898742" target="_blank" rel="noopener" data-i18n="visit_fb">Suivez-nous sur Facebook</a>
+      </div>
+      <table class="hours-table">
+        <tr><td data-i18n="d_mon">Lundi – Samedi</td><td>11:30 – 14:00 · 18:00 – 22:00</td></tr>
+        <tr><td data-i18n="d_sun">Dimanche</td><td data-i18n="closed">Fermé</td></tr>
+      </table>
     </div>
   </div>
 </section>
-
+ 
 <footer>
-  <p>&copy; 2026 Restaurant Oishi — Sierre, Suisse</p>
-  <p style="margin-top:.5rem;font-size:.9rem;" data-i18n="footer_note">Cuisine japonaise et chinoise faite maison</p>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#F2C245"/><ellipse cx="24" cy="30" rx="10" ry="6" fill="#6E1418"/><rect x="21" y="35" width="6" height="4" fill="#6E1418"/></svg>
+      <span>Restaurant Oishi</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#menu" data-i18n="nav_menu">Menu</a></li>
+      <li><a href="#sushi" data-i18n="nav_sushi">Sushi</a></li>
+      <li><a href="#galerie" data-i18n="nav_gallery">Galerie</a></li>
+      <li><a href="#visite" data-i18n="nav_visit">Nous trouver</a></li>
+      <li><a href="tel:+41274561062">027 456 10 62</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Restaurant Oishi · Sierre</span>
+    <span data-i18n="footer_made">Japonais &amp; Chinois</span>
+  </div>
 </footer>
-
+ 
 <script>
-const translations = {
-  fr:{
-    nav_home:"Accueil", nav_starters:"Entrées", nav_dishes:"Plats", nav_sushi:"Sushi", nav_reviews:"Avis", nav_contact:"Contact",
-    hero_sub:"Spécialités japonaises et chinoises à Sierre — sur place, à emporter ou en livraison.",
-    hero_btn:"Voir le menu",
-    starters_title:"Entrées",
-    dishes_title:"Plats principaux",
-    ramen_title:"Ramen",
-    menu_title:"Menu du jour",
-    sushi_title:"Sushi & Maki",
-    crispy_title:"California Croustillant",
-    pieces:"pièces", piece:"pièce",
-    about_title:"Notre restaurant",
-    about_p1:"Situé à Sierre, le restaurant Oishi vous propose une cuisine japonaise et chinoise authentique dans une ambiance chaleureuse et conviviale, en famille depuis toujours.",
-    about_p2:"Nos spécialités : sushi frais, ramen généreux, plats wok, et une large sélection de plats chinois traditionnels — à savourer sur place, en terrasse, à emporter ou livrés chez vous.",
-    info_hours:"Horaires", hours_val:"Fermé le lundi matin — ouvert dès 11h30",
-    info_wheelchair:"Accessibilité", wheelchair_val:"Entrée, parking et places assises accessibles en fauteuil roulant",
-    info_service:"Services", service_val:"Sur place, à emporter, livraison, terrasse",
-    info_payment:"Paiement", payment_val:"Cartes de crédit, cartes de débit, paiement mobile NFC",
-    reviews_title:"Avis clients",
-    review1:"Grandes portions, bien garnies avec beaucoup de viande. Le canard était excellent et les ramen, bien que différents de ce à quoi je m'attendais, étaient bons et savoureux.",
-    review2:"Vraiment très bon et bien préparé. Service amical et ambiance détendue.",
-    review3:"Personnel le plus sympathique qui soit, restaurant familial. Les sushi et le poulet étaient délicieux. Pour les standards suisses, les prix sont excellents pour la quantité — fortement recommandé !",
-    contact_title:"Contact & Réservation",
-    info_address:"Adresse", info_phone:"Téléphone", info_email:"E-mail", info_facebook:"Facebook",
-    footer_note:"Cuisine japonaise et chinoise faite maison"
-  },
-  en:{
-    nav_home:"Home", nav_starters:"Starters", nav_dishes:"Dishes", nav_sushi:"Sushi", nav_reviews:"Reviews", nav_contact:"Contact",
-    hero_sub:"Japanese & Chinese specialties in Sierre — dine in, takeaway or delivery.",
-    hero_btn:"View the menu",
-    starters_title:"Starters",
-    dishes_title:"Main Dishes",
-    ramen_title:"Ramen",
-    menu_title:"Daily Menu",
-    sushi_title:"Sushi & Maki",
-    crispy_title:"Crispy California",
-    pieces:"pieces", piece:"piece",
-    about_title:"Our Restaurant",
-    about_p1:"Located in Sierre, Restaurant Oishi offers authentic Japanese and Chinese cuisine in a warm, family-run atmosphere.",
-    about_p2:"Our specialties: fresh sushi, generous ramen, wok dishes, and a wide selection of traditional Chinese dishes — enjoy them on-site, on the terrace, takeaway or delivered to your door.",
-    info_hours:"Hours", hours_val:"Closed Monday morning — open from 11:30 AM",
-    info_wheelchair:"Accessibility", wheelchair_val:"Wheelchair accessible entrance, parking and seating",
-    info_service:"Services", service_val:"Dine-in, takeaway, delivery, outdoor seating",
-    info_payment:"Payment", payment_val:"Credit cards, debit cards, NFC mobile payment",
-    reviews_title:"Customer Reviews",
-    review1:"Big portions, well loaded with a lot of meat. Duck was great and the ramen, although not what expected, was good enough and tasty.",
-    review2:"Super great & well prepared. Friendly service and a relaxed place.",
-    review3:"Friendliest staff ever, family owned restaurant. The sushi and chicken were very delicious. Considering Swiss standards the prices were great for the amount of food you get — couldn't recommend enough!",
-    contact_title:"Contact & Reservation",
-    info_address:"Address", info_phone:"Phone", info_email:"Email", info_facebook:"Facebook",
-    footer_note:"Homemade Japanese and Chinese cuisine"
-  },
-  de:{
-    nav_home:"Startseite", nav_starters:"Vorspeisen", nav_dishes:"Gerichte", nav_sushi:"Sushi", nav_reviews:"Bewertungen", nav_contact:"Kontakt",
-    hero_sub:"Japanische & chinesische Spezialitäten in Sierre — vor Ort, zum Mitnehmen oder Lieferdienst.",
-    hero_btn:"Speisekarte ansehen",
-    starters_title:"Vorspeisen",
-    dishes_title:"Hauptgerichte",
-    ramen_title:"Ramen",
-    menu_title:"Tagesmenü",
-    sushi_title:"Sushi & Maki",
-    crispy_title:"Knuspriges California",
-    pieces:"Stück", piece:"Stück",
-    about_title:"Unser Restaurant",
-    about_p1:"Das Restaurant Oishi in Sierre bietet authentische japanische und chinesische Küche in familiärer, gemütlicher Atmosphäre.",
-    about_p2:"Unsere Spezialitäten: frisches Sushi, herzhafte Ramen, Wok-Gerichte und eine große Auswahl traditioneller chinesischer Speisen — vor Ort, auf der Terrasse, zum Mitnehmen oder als Lieferung.",
-    info_hours:"Öffnungszeiten", hours_val:"Montagvormittag geschlossen — ab 11:30 Uhr geöffnet",
-    info_wheelchair:"Barrierefreiheit", wheelchair_val:"Rollstuhlgerechter Eingang, Parkplatz und Sitzgelegenheiten",
-    info_service:"Serviceoptionen", service_val:"Speisen vor Ort, zum Mitnehmen, Lieferdienst, Terrasse",
-    info_payment:"Zahlungen", payment_val:"Kreditkarten, Debitkarten, mobile NFC-Zahlung",
-    reviews_title:"Kundenbewertungen",
-    review1:"Große Portionen, reichlich Fleisch. Die Ente war großartig und die Ramen, obwohl anders als erwartet, waren gut und schmackhaft.",
-    review2:"Super lecker & gut zubereitet. Freundlicher Service und entspannte Atmosphäre.",
-    review3:"Freundlichstes Personal überhaupt, familiengeführtes Restaurant. Sushi und Hähnchen waren sehr lecker. Für Schweizer Verhältnisse ein sehr gutes Preis-Leistungs-Verhältnis — sehr zu empfehlen!",
-    contact_title:"Kontakt & Reservierung",
-    info_address:"Adresse", info_phone:"Telefon", info_email:"E-Mail", info_facebook:"Facebook",
-    footer_note:"Hausgemachte japanische und chinesische Küche"
-  }
+const MENU = {"entrees": [["E1", "Edamames", "Edamame beans", "Edamame-Bohnen", 6.0, []], ["E2", "Tempura Crevette (3p)", "Shrimp tempura (3pc)", "Garnelen-Tempura (3 St.)", 7.5, []], ["E3", "Brochettes de Poulet (3p)", "Chicken skewers (3pc)", "Hühnchenspiesse (3 St.)", 7.5, []], ["E4", "Won-ton Frite (4p)", "Fried wontons (4pc)", "Frittierte Wan-Tan (4 St.)", 7.5, []], ["E5", "Rouleaux de Printemps (2p)", "Spring rolls (2pc)", "Frühlingsrollen (2 St.)", 7.5, []], ["E6", "Raviolis Grillés (4p)", "Grilled dumplings (4pc)", "Gegrillte Teigtaschen (4 St.)", 9.0, []], ["E7", "Raviolis à la Vapeur (4p)", "Steamed dumplings (4pc)", "Gedämpfte Teigtaschen (4 St.)", 8.0, []], ["E8", "Raviolis aux Crevettes (4p)", "Shrimp dumplings (4pc)", "Garnelen-Teigtaschen (4 St.)", 9.0, []], ["E9", "Shao-mai à la Vapeur (4p)", "Steamed shao-mai (4pc)", "Gedämpfte Shao-mai (4 St.)", 8.0, []], ["E10", "Mix Snacks à la Vapeur", "Steamed snack mix", "Gedämpfter Snack-Mix", 10.0, []], ["E11", "Crevettes Cuites", "Cooked shrimp", "Gekochte Garnelen", 8.5, []], ["E12", "Wakamé", "Seaweed salad", "Algensalat", 6.5, []], ["E13", "Salade de Jour", "Salad of the day", "Tagessalat", 7.5, []], ["E14", "Salade Saumon Avocat", "Salmon avocado salad", "Lachs-Avocado-Salat", 14.9, []], ["E15", "Soupe Miso", "Miso soup", "Miso-Suppe", 7.5, []], ["E16", "Soupe Aigre Piquant", "Hot & sour soup", "Scharf-saure Suppe", 7.5, []]], "plats": [["1", "Poulet Aigre-doux", "Sweet & sour chicken", "Süss-saures Hühnchen", 20.0, []], ["2", "Poulet aux Curry (Jaune ou Rouge)", "Curry chicken (yellow or red)", "Curry-Hühnchen (gelb oder rot)", 21.9, []], ["3", "Poulet Crispy Chili", "Crispy chili chicken", "Knuspriges Chili-Hühnchen", 23.9, ["spicy", "reco"]], ["4", "Poulet Croustillant", "Crispy chicken", "Knuspriges Hühnchen", 22.9, ["reco"]], ["5", "Boeuf aux Curry (Jaune ou Rouge)", "Curry beef (yellow or red)", "Curry-Rind (gelb oder rot)", 26.5, []], ["6", "Boeuf Croustillant", "Crispy beef", "Knuspriges Rind", 26.5, ["reco"]], ["7", "Boeuf Sautée Légumes ou Piquant", "Stir-fried beef, vegetables or spicy", "Rind-Wok mit Gemüse oder scharf", 26.0, ["spicy", "best"]], ["8", "Boeuf Sautée Oignons", "Stir-fried beef with onions", "Rind-Wok mit Zwiebeln", 26.0, []], ["9", "Lanières de Porc 4 Saisons", "Pork strips “four seasons”", "Schweinestreifen „Vier Jahreszeiten“", 24.9, ["spicy"]], ["10", "Porc Aigre-doux", "Sweet & sour pork", "Süss-saures Schwein", 20.9, []], ["11", "Lanières de Porc (spécialité)", "Pork strips (chef's specialty)", "Schweinestreifen (Spezialität)", 25.9, []], ["12", "Délice de Filet de Porc", "Pork fillet delight", "Schweinefilet-Delikatesse", 23.9, []], ["13", "Travers de Porc", "Spare ribs", "Rippchen", 23.9, []], ["14", "Ribs de Porc Laqué", "Lacquered pork ribs", "Lackierte Rippchen", 23.9, []], ["15", "Canard Laqué", "Lacquered duck", "Lackierte Ente", 25.9, []], ["16", "Canard Aigre-Piquant ou Aigre-doux", "Duck hot & sour or sweet & sour", "Ente scharf-sauer oder süss-sauer", 26.9, ["spicy"]], ["17", "Canard Crispy avec Crêpes", "Crispy duck with pancakes", "Knusprige Ente mit Pfannkuchen", 31.9, []], ["18", "Canard Sautées Légumes", "Stir-fried duck with vegetables", "Enten-Wok mit Gemüse", 26.9, ["spicy"]], ["19", "Crevette Aigre-doux", "Sweet & sour shrimp", "Süss-saure Garnelen", 25.9, []], ["20", "Crevette Sautée Légumes", "Stir-fried shrimp with vegetables", "Garnelen-Wok mit Gemüse", 25.9, []], ["21", "Crevette aux Curry (Jaune ou Rouge)", "Curry shrimp (yellow or red)", "Curry-Garnelen (gelb oder rot)", 25.9, []], ["22", "Crevette Impériale", "Imperial shrimp", "Kaiser-Garnelen", 26.9, ["spicy"]], ["23", "Boulette de Crevettes Crispy", "Crispy shrimp balls", "Knusprige Garnelenbällchen", 25.9, []], ["24", "Poisson Aigre-doux", "Sweet & sour fish", "Süss-saurer Fisch", 25.0, []], ["25", "Ramen aux Boeuf", "Beef ramen", "Rind-Ramen", 22.5, []], ["26", "Nouilles Sautées Boeuf", "Stir-fried noodles with beef", "Nudel-Wok mit Rind", 19.5, []], ["27", "Nouilles Sautées Crevettes", "Stir-fried noodles with shrimp", "Nudel-Wok mit Garnelen", 18.9, []], ["28", "Nouilles Sautées Poulet", "Stir-fried noodles with chicken", "Nudel-Wok mit Hühnchen", 17.9, []], ["29", "Riz Sautée Poulet", "Fried rice with chicken", "Gebratener Reis mit Hühnchen", 17.9, []], ["30", "Riz Sautée Boeuf", "Fried rice with beef", "Gebratener Reis mit Rind", 19.5, []], ["31", "Riz Sautée Crevettes", "Fried rice with shrimp", "Gebratener Reis mit Garnelen", 18.9, []], ["32", "Veggie Mix Sautée", "Stir-fried vegetable mix", "Gemüse-Wok", 17.9, []]], "plats_note": {"fr": "Les plats 1 à 24 sont servis avec riz parfumé, riz cantonnais ou nouilles sautées (+4.- CHF). Bon appétit !", "en": "Dishes 1 to 24 are served with jasmine rice, Cantonese rice or stir-fried noodles (+4.- CHF). Enjoy your meal!", "de": "Die Gerichte 1 bis 24 werden mit Jasminreis, kantonesischem Reis oder gebratenen Nudeln serviert (+4.- CHF). Guten Appetit!"}, "ramen": [["Aux Légumes", "Vegetable", "Gemüse", 16.9, {"fr": "Nouilles, pak-choï, algues, cacahuètes (+3.- CHF œuf mariné)", "en": "Noodles, bok choy, seaweed, peanuts (+3.- CHF marinated egg)", "de": "Nudeln, Pak Choi, Algen, Erdnüsse (+3.- CHF mariniertes Ei)"}], ["Aux Poulet", "Chicken", "Hühnchen", 21.9, {"fr": "Nouilles, poulet, pak-choï, algues, cacahuètes, œuf mariné", "en": "Noodles, chicken, bok choy, seaweed, peanuts, marinated egg", "de": "Nudeln, Hühnchen, Pak Choi, Algen, Erdnüsse, mariniertes Ei"}], ["Aux Crevette", "Shrimp", "Garnelen", 22.9, {"fr": "Nouilles, crevette, pak-choï, algues, cacahuètes, œuf mariné", "en": "Noodles, shrimp, bok choy, seaweed, peanuts, marinated egg", "de": "Nudeln, Garnelen, Pak Choi, Algen, Erdnüsse, mariniertes Ei"}], ["Aux Porc", "Pork", "Schwein", 22.9, {"fr": "Nouilles, porc, pak-choï, algues, cacahuètes, œuf mariné", "en": "Noodles, pork, bok choy, seaweed, peanuts, marinated egg", "de": "Nudeln, Schwein, Pak Choi, Algen, Erdnüsse, mariniertes Ei"}], ["Aux Boeuf", "Beef", "Rind", 23.9, {"fr": "Nouilles, bœuf, pak-choï, algues, cacahuètes, œuf mariné", "en": "Noodles, beef, bok choy, seaweed, peanuts, marinated egg", "de": "Nudeln, Rind, Pak Choi, Algen, Erdnüsse, mariniertes Ei"}], ["Aux Canard", "Duck", "Ente", 23.9, {"fr": "Nouilles, canard, pak-choï, algues, cacahuètes, œuf mariné", "en": "Noodles, duck, bok choy, seaweed, peanuts, marinated egg", "de": "Nudeln, Ente, Pak Choi, Algen, Erdnüsse, mariniertes Ei"}]], "platdujour": [["Poulet Aigre-doux", "Sweet & sour chicken", "Süss-saures Hühnchen", 16.9], ["Porc Sauce Doré-Brun", "Pork in golden-brown sauce", "Schwein in goldbrauner Sauce", 16.9], ["Canard Sauté", "Sautéed duck", "Gebratene Ente", 18.9], ["Crevettes Aigre-doux", "Sweet & sour shrimp", "Süss-saure Garnelen", 18.9], ["Boeuf Sauté", "Sautéed beef", "Gebratenes Rind", 18.9]], "sushi": {"hosomaki": {"title": {"fr": "Hoso Maki", "en": "Hoso Maki", "de": "Hoso Maki"}, "sub": {"fr": "6 pièces", "en": "6 pieces", "de": "6 Stück"}, "items": [["M1", "Saumon", "Salmon", "Lachs", 7.0, []], ["M2", "Thon", "Tuna", "Thunfisch", 8.0, []], ["M3", "Crevette", "Shrimp", "Garnele", 7.0, []], ["M4", "Concombre", "Cucumber", "Gurke", 6.0, []], ["M5", "Surimi", "Surimi", "Surimi", 6.0, []], ["M6", "Avocat", "Avocado", "Avocado", 6.0, []], ["M7", "Fromage", "Cream cheese", "Frischkäse", 6.0, []], ["M8", "Thon cuit", "Cooked tuna", "Gekochter Thunfisch", 7.5, []], ["M9", "Radis Jaune", "Pickled yellow radish", "Gelber Rettich", 6.0, []]]}, "temaki": {"title": {"fr": "Temaki", "en": "Temaki", "de": "Temaki"}, "sub": {"fr": "1 pièce", "en": "1 piece", "de": "1 Stück"}, "items": [["T1", "Saumon avocat", "Salmon, avocado", "Lachs, Avocado", 8.5, []], ["T2", "Thon avocat", "Tuna, avocado", "Thunfisch, Avocado", 9.0, []], ["T3", "Surimi avocat", "Surimi, avocado", "Surimi, Avocado", 8.0, []], ["T4", "Fromage vegemix", "Cream cheese, veggie mix", "Frischkäse, Gemüsemix", 8.5, []], ["T5", "Anguille avocat", "Eel, avocado", "Aal, Avocado", 10.0, []], ["T6", "Saumon Radis Jaune", "Salmon, pickled radish", "Lachs, gelber Rettich", 8.5, []], ["T7", "Thon Radis Jaune", "Tuna, pickled radish", "Thunfisch, gelber Rettich", 9.0, []]]}, "nigiri": {"title": {"fr": "Nigiri", "en": "Nigiri", "de": "Nigiri"}, "sub": {"fr": "2 pièces", "en": "2 pieces", "de": "2 Stück"}, "items": [["N1", "Saumon", "Salmon", "Lachs", 7.0, []], ["N2", "Thon", "Tuna", "Thunfisch", 8.0, []], ["N3", "Crevette", "Shrimp", "Garnele", 7.0, []], ["N4", "Crevette douce", "Sweet shrimp", "Süsse Garnele", 8.0, []], ["N5", "St-Jacques", "Scallop", "Jakobsmuschel", 8.0, []], ["N6", "Seiche", "Cuttlefish", "Sepia", 7.0, []], ["N7", "Anguille", "Eel", "Aal", 8.0, []], ["N8", "Poulpe", "Octopus", "Oktopus", 8.0, []], ["N9", "Bar", "Sea bass", "Wolfsbarsch", 7.0, []]]}, "sashimi": {"title": {"fr": "Sashimi", "en": "Sashimi", "de": "Sashimi"}, "sub": {"fr": "3 pièces", "en": "3 pieces", "de": "3 Stück"}, "items": [["S1", "Crevette douce", "Sweet shrimp", "Süsse Garnele", 7.0, []], ["S2", "Saumon", "Salmon", "Lachs", 8.5, []], ["S3", "Thon", "Tuna", "Thunfisch", 9.5, []], ["S4", "Saint-Jacques", "Scallop", "Jakobsmuschel", 8.5, []], ["S5", "Anguille", "Eel", "Aal", 8.5, []], ["S6", "Seiche", "Cuttlefish", "Sepia", 8.0, []], ["S7", "Poulpe", "Octopus", "Oktopus", 8.0, []], ["S8", "Bar", "Sea bass", "Wolfsbarsch", 8.0, []]]}, "futomaki": {"title": {"fr": "Futomaki", "en": "Futomaki", "de": "Futomaki"}, "sub": {"fr": "5 pièces", "en": "5 pieces", "de": "5 Stück"}, "items": [["F1", "Saumon Avocat Fromage Surimi Concombre", "Salmon, avocado, cream cheese, surimi, cucumber", "Lachs, Avocado, Frischkäse, Surimi, Gurke", 15.5, []], ["F2", "Thon Avocat Fromage Surimi Concombre", "Tuna, avocado, cream cheese, surimi, cucumber", "Thunfisch, Avocado, Frischkäse, Surimi, Gurke", 16.5, []], ["F3", "Vergé : Avocat Radis Concombre Wakame Fromage", "“Vergé”: avocado, radish, cucumber, seaweed, cream cheese", "„Vergé“: Avocado, Rettich, Gurke, Algen, Frischkäse", 15.5, []]]}, "chirashi": {"title": {"fr": "Chirashi", "en": "Chirashi", "de": "Chirashi"}, "sub": {"fr": "", "en": "", "de": ""}, "items": [["Ch1", "Saumon Avocat", "Salmon, avocado", "Lachs, Avocado", 28.9, []], ["Ch2", "Thon Avocat", "Tuna, avocado", "Thunfisch, Avocado", 32.9, []], ["Ch3", "Anguille", "Eel", "Aal", 36.9, []], ["Ch4", "Mix Poisson (Saumon, Thon, Anguille)", "Mixed fish (salmon, tuna, eel)", "Fisch-Mix (Lachs, Thunfisch, Aal)", 41.0, []]]}, "california": {"title": {"fr": "California", "en": "California", "de": "California"}, "sub": {"fr": "8 pièces", "en": "8 pieces", "de": "8 Stück"}, "items": [["C1", "Saumon avocat", "Salmon, avocado", "Lachs, Avocado", 13.0, []], ["C2", "Thon avocat", "Tuna, avocado", "Thunfisch, Avocado", 14.0, []], ["C3", "Surimi avocat", "Surimi, avocado", "Surimi, Avocado", 12.0, []], ["C4", "Fromage avocat", "Cream cheese, avocado", "Frischkäse, Avocado", 12.0, []], ["C5", "Anguille avocat", "Eel, avocado", "Aal, Avocado", 14.0, []], ["C6", "Crevette panée", "Breaded shrimp", "Panierte Garnele", 14.0, []], ["C7", "Radis Jaune Avocat", "Pickled radish, avocado", "Gelber Rettich, Avocado", 12.0, []], ["C8", "Avocat Concombre", "Avocado, cucumber", "Avocado, Gurke", 12.0, []], ["C9", "Avocat Wakame", "Avocado, seaweed", "Avocado, Algen", 12.0, []], ["C10", "Saumon Fromage Avocat", "Salmon, cream cheese, avocado", "Lachs, Frischkäse, Avocado", 14.0, []]]}, "massago": {"title": {"fr": "Massago", "en": "Massago", "de": "Massago"}, "sub": {"fr": "8 pièces", "en": "8 pieces", "de": "8 Stück"}, "items": [["MA1", "Saumon Avocat", "Salmon, avocado", "Lachs, Avocado", 14.0, []], ["MA2", "Thon Avocat", "Tuna, avocado", "Thunfisch, Avocado", 15.0, []], ["MA3", "Surimi Avocat", "Surimi, avocado", "Surimi, Avocado", 13.0, []], ["MA4", "Fromage Avocat", "Cream cheese, avocado", "Frischkäse, Avocado", 13.0, []], ["MA5", "Anguilles Avocat", "Eel, avocado", "Aal, Avocado", 15.0, []], ["MA6", "Radis Jaune Avocat", "Pickled radish, avocado", "Gelber Rettich, Avocado", 13.0, []], ["MA7", "Thon Avocat Fromage", "Tuna, avocado, cream cheese", "Thunfisch, Avocado, Frischkäse", 16.0, []], ["MA8", "Crevette panée", "Breaded shrimp", "Panierte Garnele", 15.0, []]]}, "california_croustillant": {"title": {"fr": "California Croustillant", "en": "Crispy California", "de": "Knuspriges California"}, "sub": {"fr": "8 pièces", "en": "8 pieces", "de": "8 Stück"}, "items": [["CC1", "Saumon Avocat", "Salmon, avocado", "Lachs, Avocado", 14.0, []], ["CC2", "Thon Avocat", "Tuna, avocado", "Thunfisch, Avocado", 15.0, []], ["CC3", "Surimi Avocat", "Surimi, avocado", "Surimi, Avocado", 13.0, []], ["CC4", "Fromage Avocat", "Cream cheese, avocado", "Frischkäse, Avocado", 13.0, []], ["CC5", "Radis Avocat", "Pickled radish, avocado", "Rettich, Avocado", 13.0, []], ["CC6", "Saumon Radis Avocat", "Salmon, pickled radish, avocado", "Lachs, Rettich, Avocado", 15.0, []], ["CC7", "Crevette panée", "Breaded shrimp", "Panierte Garnele", 15.0, []], ["CC8", "Thon Radis Avocat", "Tuna, pickled radish, avocado", "Thunfisch, Rettich, Avocado", 16.0, []]]}, "gunkan": {"title": {"fr": "Gunkan", "en": "Gunkan", "de": "Gunkan"}, "sub": {"fr": "2 pièces", "en": "2 pieces", "de": "2 Stück"}, "items": [["G1", "Saumon Avocat Épicé", "Spicy salmon, avocado", "Scharfer Lachs, Avocado", 8.5, ["spicy"]], ["G2", "Saumon Avocat", "Salmon, avocado", "Lachs, Avocado", 8.0, []], ["G3", "Thon Avocat Épicé", "Spicy tuna, avocado", "Scharfer Thunfisch, Avocado", 9.5, ["spicy"]], ["G4", "Thon Avocat", "Tuna, avocado", "Thunfisch, Avocado", 9.0, []], ["G5", "Thon Cuit Avocat", "Cooked tuna, avocado", "Gekochter Thunfisch, Avocado", 8.5, []], ["G6", "Saumon Wakame", "Salmon, seaweed", "Lachs, Algen", 8.0, []], ["G7", "Thon Wakame", "Tuna, seaweed", "Thunfisch, Algen", 9.0, []]]}}};
+ 
+const UI = {
+ fr:{nav_menu:"Menu",nav_sushi:"Sushi",nav_gallery:"Galerie",nav_visit:"Nous trouver",
+   hero_eyebrow:"Sierre · Valais",
+   hero_tagline:"Spécialités japonaises &amp; chinoises — sushi, ramen et woks préparés avec soin, en plein cœur de Sierre.",
+   hero_reviews:"(93 avis Google)", hero_cta_call:"📞 Réserver — 027 456 10 62", hero_cta_menu:"Voir le menu",
+   info_hours:"Ouvert dès 11h30", info_takeaway:"À emporter &amp; livraison", info_wheelchair:"Accès fauteuil roulant",
+   pdj_title:"Plat du jour", pdj_sub:"Servi du lundi au vendredi, le midi — avec riz parfumé",
+   pdj_badge:"Lun–Ven midi", pdj_note:"Le plat du jour est servi uniquement le midi, du lundi au vendredi, riz parfumé inclus.",
+   menu_title:"La carte", menu_sub:"Cuisine chinoise au wok, nouilles, riz et ramen maison",
+   tab_entrees:"Entrées", tab_plats:"Plats", tab_ramen:"Ramen",
+   legend_spicy:"Épicé", legend_reco:"Recommandé par la maison",
+   sushi_title:"Sushi &amp; sashimi", sushi_sub:"Préparés minute — poisson frais, riz vinaigré maison",
+   gallery_title:"Notre cuisine", gallery_sub:"Un aperçu de nos assiettes, servies fraîches chaque jour",
+   cap_noodles:"Nouilles sautées", cap_baos:"Raviolis vapeur", cap_dessert:"Douceur maison", cap_plate:"Wok du chef",
+   practical_title:"Bon à savoir", chip_wheelchair:"Accès &amp; sanitaires PMR", chip_terrace:"Terrasse extérieure",
+   chip_takeaway:"À emporter", chip_delivery:"Livraison", chip_cards:"Cartes &amp; NFC", chip_kids:"Familles &amp; groupes bienvenus",
+   visit_title:"Nous trouver", visit_contact:"Contact &amp; horaires", visit_fb:"Suivez-nous sur Facebook",
+   d_mon:"Lundi – Samedi", d_sun:"Dimanche", closed:"Fermé", footer_made:"Japonais &amp; Chinois"},
+ en:{nav_menu:"Menu",nav_sushi:"Sushi",nav_gallery:"Gallery",nav_visit:"Find us",
+   hero_eyebrow:"Sierre · Valais",
+   hero_tagline:"Japanese &amp; Chinese specialties — sushi, ramen and wok dishes made with care, in the heart of Sierre.",
+   hero_reviews:"(93 Google reviews)", hero_cta_call:"📞 Reserve — 027 456 10 62", hero_cta_menu:"View the menu",
+   info_hours:"Open from 11:30 am", info_takeaway:"Takeaway &amp; delivery", info_wheelchair:"Wheelchair accessible",
+   pdj_title:"Daily special", pdj_sub:"Served Monday to Friday, at lunch — with jasmine rice",
+   pdj_badge:"Mon–Fri lunch", pdj_note:"The daily special is served at lunchtime only, Monday to Friday, jasmine rice included.",
+   menu_title:"The menu", menu_sub:"Chinese wok cooking, noodles, rice and homemade ramen",
+   tab_entrees:"Starters", tab_plats:"Main dishes", tab_ramen:"Ramen",
+   legend_spicy:"Spicy", legend_reco:"House recommendation",
+   sushi_title:"Sushi &amp; sashimi", sushi_sub:"Made to order — fresh fish, homemade seasoned rice",
+   gallery_title:"Our kitchen", gallery_sub:"A glimpse of our dishes, served fresh every day",
+   cap_noodles:"Stir-fried noodles", cap_baos:"Steamed dumplings", cap_dessert:"House dessert", cap_plate:"Chef's wok",
+   practical_title:"Good to know", chip_wheelchair:"Wheelchair access &amp; restroom", chip_terrace:"Outdoor terrace",
+   chip_takeaway:"Takeaway", chip_delivery:"Delivery", chip_cards:"Cards &amp; NFC", chip_kids:"Families &amp; groups welcome",
+   visit_title:"Find us", visit_contact:"Contact &amp; hours", visit_fb:"Follow us on Facebook",
+   d_mon:"Monday – Saturday", d_sun:"Sunday", closed:"Closed", footer_made:"Japanese &amp; Chinese"},
+ de:{nav_menu:"Menü",nav_sushi:"Sushi",nav_gallery:"Galerie",nav_visit:"So finden Sie uns",
+   hero_eyebrow:"Sierre · Wallis",
+   hero_tagline:"Japanische &amp; chinesische Spezialitäten — Sushi, Ramen und Wok-Gerichte, mit Sorgfalt zubereitet, mitten in Sierre.",
+   hero_reviews:"(93 Google-Bewertungen)", hero_cta_call:"📞 Reservieren — 027 456 10 62", hero_cta_menu:"Zur Speisekarte",
+   info_hours:"Geöffnet ab 11:30 Uhr", info_takeaway:"Zum Mitnehmen &amp; Lieferdienst", info_wheelchair:"Rollstuhlgerechter Zugang",
+   pdj_title:"Tagesteller", pdj_sub:"Montag bis Freitag, mittags — mit Jasminreis",
+   pdj_badge:"Mo–Fr mittags", pdj_note:"Der Tagesteller wird nur mittags von Montag bis Freitag serviert, Jasminreis inbegriffen.",
+   menu_title:"Die Speisekarte", menu_sub:"Chinesische Wok-Küche, Nudeln, Reis und hausgemachtes Ramen",
+   tab_entrees:"Vorspeisen", tab_plats:"Hauptgerichte", tab_ramen:"Ramen",
+   legend_spicy:"Scharf", legend_reco:"Empfehlung des Hauses",
+   sushi_title:"Sushi &amp; Sashimi", sushi_sub:"Frisch zubereitet — frischer Fisch, hausgemachter Reis",
+   gallery_title:"Unsere Küche", gallery_sub:"Ein Einblick in unsere täglich frisch servierten Gerichte",
+   cap_noodles:"Gebratene Nudeln", cap_baos:"Gedämpfte Teigtaschen", cap_dessert:"Hausdessert", cap_plate:"Wok des Küchenchefs",
+   practical_title:"Gut zu wissen", chip_wheelchair:"Rollstuhlzugang &amp; WC", chip_terrace:"Aussenterrasse",
+   chip_takeaway:"Zum Mitnehmen", chip_delivery:"Lieferdienst", chip_cards:"Karten &amp; NFC", chip_kids:"Familien &amp; Gruppen willkommen",
+   visit_title:"So finden Sie uns", visit_contact:"Kontakt &amp; Öffnungszeiten", visit_fb:"Folgen Sie uns auf Facebook",
+   d_mon:"Montag – Samstag", d_sun:"Sonntag", closed:"Geschlossen", footer_made:"Japanisch &amp; Chinesisch"}
 };
-
-// Menu data: [key-not-translated name (kept in French, as on real menu), price, spicy?]
-const menus = {
-  starters: [
-    ["E1. Edamames","6.00"],["E2. Tempura Crevette (3p)","7.50"],
-    ["E3. Brochettes de Poulet (3p)","7.50"],["E4. Won-ton Frite (4p)","7.50"],
-    ["E5. Rouleaux de Printemps (2p)","7.50"],["E6. Raviolis Grillés (4p)","9.00"],
-    ["E7. Raviolis à la Vapeur (4p)","8.00"],["E8. Raviolis aux Crevette (4p)","9.00"],
-    ["E9. Shao-mai à la Vapeur (4p)","8.00"],["E10. Mix Snacks à la Vapeur","10.00"],
-    ["E11. Crevette Cuites","8.50"],["E12. Wakamé","6.50"],
-    ["E13. Salade de Jour","7.50"],["E14. Salade Saumon Avocat","14.90"],
-    ["E15. Soupe Miso","7.50"],["E16. Soupe Aigre Piquant","7.50"]
-  ],
-  dishes: [
-    ["1. Poulet Aigre-doux","20.00"],["2. Poulet aux Curry (Jaune ou Rouge)","21.90"],
-    ["3. Poulet Crispy Chili 🌶","23.90"],["4. Poulet Croustillant","22.90"],
-    ["5. Boeuf aux Curry (Jaune ou Rouge)","26.50"],["6. Boeuf Croustillant","26.50"],
-    ["7. Boeuf Sauté Légume ou Piquant 🌶","26.00"],["8. Boeuf Sautée Oignons","26.00"],
-    ["9. Lanières de Porc 4 Saisons 🌶","24.90"],["10. Porc Aigre-doux","20.90"],
-    ["11. Lanières de Porc (spécialiste)","25.90"],["12. Délice de Filet de Porc","25.90"],
-    ["13. Travers de Porc","23.90"],["14. Ribs de Porc Laqué","23.90"],
-    ["15. Canard Laqué","25.90"],["16. Canard Aigre-Piquant ou Aigre-doux 🌶","26.90"],
-    ["17. Canard Crispy avec Crêpes","31.90"],["18. Canard Sautées Légumes","26.90"],
-    ["19. Crevette Aigre-doux","25.90"],["20. Crevette Sautée Légumes","25.90"],
-    ["21. Crevette aux Curry Jaune ou Rouge","25.90"],["22. Crevette Impéria 🌶","26.90"],
-    ["23. Boulette de Crevettes Crispy","25.90"],["24. Poisson Aigre-doux","25.00"],
-    ["25. Ramen aux Boeuf","22.50"],["26. Nouilles sautée Boeuf","19.50"],
-    ["27. Nouilles Sautée Crevettes","18.90"],["28. Nouilles sautées poulet","17.90"],
-    ["29. Riz Sautée Poulet","17.90"],["30. Riz Sautée Boeuf","19.50"],
-    ["31. Riz Sautée Crevettes","18.90"],["32. Veggie Mix Sautée","17.90"]
-  ],
-  ramen: [
-    ["Aux Légumes — Nouilles, Pak-choï, Algues, cacahuètes + 3.- Oeuf mariné","dès 16.90"],
-    ["Aux Poulet — Nouilles, Poulet, Pak-choï, Algues, Cacahuètes, Oeuf mariné","21.90"],
-    ["Aux Crevette — Nouilles, Crevette, Pak-choï, Algues, Cacahuètes, Oeuf mariné","22.90"],
-    ["Aux Porc — Nouilles, Porc, Pak-choï, Algues, Cacahuètes, Oeuf mariné","22.90"],
-    ["Aux Boeuf — Nouilles, Boeuf, Pak-choï, Algues, Cacahuètes, Oeuf mariné","23.90"],
-    ["Aux Canard — Nouilles, Canard, Pak-choï, Algues, Cacahuètes, Oeuf mariné","23.90"]
-  ],
-  daily: [
-    ["Poulet aigre doux","16.90"],["Porc sauces doré brun","16.90"],
-    ["Canard sauté","18.90"],["Crevettes aigre doux","18.90"],["Boeuf sauté","18.90"]
-  ],
-  hosomaki: [
-    ["M1. Saumon","7.00"],["M2. Thon","8.00"],["M3. Crevette","7.00"],["M4. Concombre","6.00"],
-    ["M5. Surimi","6.00"],["M6. Avocat","6.00"],["M7. Fromage","6.00"],["M8. Thon cuit","7.50"],
-    ["M9. Radis Jaune","6.00"]
-  ],
-  temaki: [
-    ["T1. Saumon avocat","8.50"],["T2. Thon avocat","9.00"],["T3. Surimi avocat","8.00"],
-    ["T4. Fromage vegemix","8.50"],["T5. Anguille avocat","10.00"],
-    ["T6. Saumon Radis Jaune","8.50"],["T7. Thon Radis Jaune","9.00"]
-  ],
-  nigiri: [
-    ["N1. Saumon","7.00"],["N2. Thon","8.00"],["N3. Crevette","7.00"],["N4. Crevette douce","8.00"],
-    ["N5. St-Jacques","8.00"],["N6. Seiche","7.00"],["N7. Anguille","8.00"],["N8. Poulpe","8.00"],
-    ["N9. Bar","7.00"]
-  ],
-  sashimi: [
-    ["S1. Crevette douce","7.00"],["S2. Saumon","8.50"],["S3. Thon","9.50"],["S4. Saint-Jacques","8.50"],
-    ["S5. Anguille","8.50"],["S6. Seiche","8.00"],["S7. Poulpe","8.00"],["S8. Bar","8.00"]
-  ],
-  california: [
-    ["C1. Saumon avocat","13.00"],["C2. Thon avocat","14.00"],["C3. Surimi avocat","12.00"],
-    ["C4. Fromage avocat","12.00"],["C5. Anguille avocat","14.00"],["C6. Crevette panée","14.00"],
-    ["C7. Radis jaune avocat","12.00"],["C8. Avocat Concombre","12.00"],
-    ["C9. Avocat wakame","12.00"],["C10. Saumon Fromage Avocat","14.00"]
-  ],
-  massago: [
-    ["MA1. Saumon Avocat","14.00"],["MA2. Thon Avocat","15.00"],["MA3. Surimi Avocat","13.00"],
-    ["MA4. Fromage Avocat","13.00"],["MA5. Anguilles Avocat","15.00"],["MA6. Radis jaune avocat","13.00"],
-    ["MA7. Thon Avocat Fromage","16.00"],["MA8. Crevette panée","15.00"]
-  ],
-  crispy: [
-    ["CC1. Saumon Avocat","14.00"],["CC2. Thon Avocat","15.00"],["CC3. Surimi Avocat","13.00"],
-    ["CC4. Fromage Avocat","13.00"],["CC5. Radis Avocat","13.00"],["CC6. Saumon Radis Avocat","15.00"],
-    ["CC7. Crevette panée","15.00"],["CC8. Thon Radis Avocat","16.00"]
-  ],
-  gunkan: [
-    ["G1. Saumon Avocat Épicé","8.50"],["G2. Saumon Avocat","8.00"],
-    ["G3. Thon Avocat Épicé","9.50"],["G4. Thon Avocat","9.00"],
-    ["G5. Thon Cuit Avocat","8.50"],["G6. Saumon Wakame","8.00"],["G7. Thon Wakame","9.00"]
-  ],
-  futomaki: [
-    ["F1. Saumon Avocat Fromage Surimi concombre","15.50"],
-    ["F2. Thon Avocat fromage Surimi concombre","16.50"],
-    ["F3. Vergé: Avocat radis concombre wakame fromage","15.50"]
-  ],
-  chirashi: [
-    ["Ch1. Saumon Avocat","28.90"],["Ch2. Thon Avocat","32.90"],
-    ["Ch3. Anguille","36.90"],["Ch4. Mix Poisson (Saumon Thon Anguille)","41.00"]
-  ]
-};
-
-function renderMenus(){
-  const currency = "CHF";
-  for(const key in menus){
-    const el = document.getElementById(key+"-list");
-    if(!el) continue;
-    el.innerHTML = menus[key].map(([name,price])=>`
-      <div class="menu-item">
-        <span class="name">${name}</span>
-        <span class="price">${price} ${currency}</span>
-      </div>`).join("");
-  }
+ 
+let lang = 'fr';
+ 
+function tagHtml(tags){
+  let out = '';
+  if(tags.includes('spicy')) out += '<span class="tag tag-spicy">🌶️</span>';
+  if(tags.includes('reco') || tags.includes('best')) out += '<span class="tag tag-stamp">推</span>';
+  return out;
 }
-
-function setLang(lang){
+ 
+function nameFor(fr,en,de){
+  if(lang==='en') return en || fr;
+  if(lang==='de') return de || fr;
+  return fr;
+}
+ 
+function renderSimpleGrid(gridId, items){
+  const grid = document.getElementById(gridId);
+  grid.innerHTML = items.map(it=>{
+    const num=it[0], fr=it[1], en=it[2], de=it[3], price=it[4], tags=it[5];
+    return '<div class="menu-item"><span class="num">'+num+'</span><span class="name">'+nameFor(fr,en,de)+'</span>'+tagHtml(tags)+'<span class="price">'+price.toFixed(2)+'</span></div>';
+  }).join('');
+}
+ 
+function renderPdj(){
+  const grid = document.getElementById('pdjGrid');
+  grid.innerHTML = MENU.platdujour.map(it=>{
+    const fr=it[0], en=it[1], de=it[2], price=it[3];
+    return '<div class="pdj-item"><span class="name">'+nameFor(fr,en,de)+'</span><span class="price">'+price.toFixed(2)+'</span></div>';
+  }).join('');
+}
+ 
+function renderRamen(){
+  const grid = document.getElementById('grid-ramen');
+  grid.innerHTML = MENU.ramen.map(it=>{
+    const fr=it[0], en=it[1], de=it[2], price=it[3], desc=it[4];
+    return '<div class="menu-item"><span class="name">'+nameFor(fr,en,de)+'<span class="sub">'+desc[lang]+'</span></span><span class="price">'+price.toFixed(2)+'</span></div>';
+  }).join('');
+}
+ 
+const sushiOrder = ["hosomaki","temaki","nigiri","sashimi","futomaki","chirashi","california","massago","california_croustillant","gunkan"];
+ 
+function renderSushiTabs(){
+  const tabWrap = document.getElementById('sushiTabs');
+  tabWrap.innerHTML = sushiOrder.map(function(key,i){
+    const sec = MENU.sushi[key];
+    return '<button class="sub-tab '+(i===0?'active':'')+'" data-sushi="'+key+'">'+sec.title[lang]+'</button>';
+  }).join('');
+  tabWrap.querySelectorAll('.sub-tab').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabWrap.querySelectorAll('.sub-tab').forEach(function(b){b.classList.remove('active');});
+      btn.classList.add('active');
+      document.querySelectorAll('.sub-panel').forEach(function(p){p.classList.remove('active');});
+      document.getElementById('sushi-'+btn.dataset.sushi).classList.add('active');
+    });
+  });
+}
+ 
+function renderSushiPanels(){
+  const wrap = document.getElementById('sushiPanels');
+  wrap.innerHTML = sushiOrder.map(function(key,i){
+    const sec = MENU.sushi[key];
+    const items = sec.items.map(function(it){
+      const code=it[0], fr=it[1], en=it[2], de=it[3], price=it[4], tags=it[5];
+      return '<div class="menu-item"><span class="num">'+code+'</span><span class="name">'+nameFor(fr,en,de)+'</span>'+tagHtml(tags)+'<span class="price">'+price.toFixed(2)+'</span></div>';
+    }).join('');
+    return '<div class="sub-panel '+(i===0?'active':'')+'" id="sushi-'+key+'"><span class="sub-panel-title">'+sec.title[lang]+'</span><span class="sub-panel-count">'+sec.sub[lang]+'</span><div class="item-grid">'+items+'</div></div>';
+  }).join('');
+}
+ 
+function applyUI(){
   document.documentElement.lang = lang;
-  const t = translations[lang];
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    const key = el.getAttribute("data-i18n");
-    if(t[key]) el.textContent = t[key];
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    const key = el.getAttribute('data-i18n');
+    if(UI[lang][key]!==undefined) el.innerHTML = UI[lang][key];
   });
-  document.querySelectorAll(".lang-switch button").forEach(b=>{
-    b.classList.toggle("active", b.dataset.lang===lang);
-  });
-  localStorage_lang = lang;
 }
-
-document.querySelectorAll(".lang-switch button").forEach(btn=>{
-  btn.addEventListener("click", ()=> setLang(btn.dataset.lang));
+ 
+function renderAll(){
+  applyUI();
+  renderSimpleGrid('grid-entrees', MENU.entrees);
+  renderSimpleGrid('grid-plats', MENU.plats);
+  document.getElementById('platsNote').textContent = MENU.plats_note[lang];
+  renderRamen();
+  renderPdj();
+  renderSushiTabs();
+  renderSushiPanels();
+}
+ 
+document.querySelectorAll('.lang-switch button').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    lang = btn.dataset.lang;
+    document.querySelectorAll('.lang-switch button').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    renderAll();
+  });
 });
-
-renderMenus();
-setLang("fr");
+ 
+document.querySelectorAll('.menu-tab').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.menu-tab').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    document.querySelectorAll('.menu-panel').forEach(function(p){p.classList.remove('active');});
+    document.getElementById('panel-'+btn.dataset.panel).classList.add('active');
+  });
+});
+ 
+document.getElementById('burgerBtn').addEventListener('click', function(){
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click', function(){
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+ 
+renderAll();
 </script>
-
 </body>
 </html>
